@@ -1,1 +1,13 @@
-const b=document.querySelector('.menu-button'),n=document.querySelector('.nav-links');if(b&&n)b.onclick=()=>{n.classList.toggle('open');b.setAttribute('aria-expanded',String(n.classList.contains('open')))};const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
+const button = document.querySelector('.menu-button');
+const links = document.querySelector('.nav-links');
+if (button && links) {
+  button.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    button.setAttribute('aria-expanded', String(open));
+  });
+}
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => links?.classList.remove('open'));
+});
+const year = document.getElementById('year');
+if (year) year.textContent = new Date().getFullYear();
