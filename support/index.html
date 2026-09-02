@@ -26,18 +26,21 @@
   </div>
 </header>
 
+
 <main>
 <section class="page-hero"><div class="container">
   <span class="eyebrow">Support</span>
   <h1>Help with Pension Planner</h1>
-  <p>Use this page for technical problems, questions about how the app works, feedback and feature requests.</p>
+  <p>Use this page for technical problems, questions about how the app works, feedback and feature requests. The Model Health FAQs below explain many of the messages you may see while building or reviewing a retirement scenario.</p>
 </div></section>
+
 <section><div class="container content">
   <div class="contact-card">
     <h2>Contact</h2>
     <p><strong>Email:</strong> <a href="mailto:support@pensionplannerapp.co.uk">support@pensionplannerapp.co.uk</a></p>
     <p><strong>Website:</strong> <a href="https://pensionplannerapp.co.uk/">pensionplannerapp.co.uk</a></p>
   </div>
+
   <div class="grid-2">
     <div class="card">
       <h3>Helpful when reporting a problem</h3>
@@ -54,8 +57,262 @@
       <figcaption>If your query is conceptual rather than technical, the overview diagram may help explain what the app is doing.</figcaption>
     </figure>
   </div>
+
+  <div class="notice">
+    <strong>Protect your financial information.</strong> You do not normally need to send full pension balances, account numbers, National Insurance numbers, passwords or highly sensitive financial documents to obtain technical support.
+  </div>
+
+  <section id="model-health-faq" class="faq-section" aria-labelledby="model-health-heading">
+    <span class="eyebrow">Model Health</span>
+    <h2 id="model-health-heading">Common Model Health messages and how to resolve them</h2>
+    <p class="section-intro">Model Health looks for missing, internally inconsistent or potentially misleading inputs. A warning does not necessarily mean your scenario is wrong: some messages simply identify assumptions that deserve a deliberate review.</p>
+
+    <div class="severity-grid" aria-label="Model Health severity levels">
+      <div class="severity-card severity-critical">
+        <strong>Needs attention</strong>
+        <span>Usually an input inconsistency or a result that can materially undermine the forecast.</span>
+      </div>
+      <div class="severity-card severity-warning">
+        <strong>Review</strong>
+        <span>The input may be valid, but Pension Planner thinks it is worth checking.</span>
+      </div>
+      <div class="severity-card severity-note">
+        <strong>Notes</strong>
+        <span>Context or modelling choices that can help you interpret the forecast correctly.</span>
+      </div>
+    </div>
+
+    <h3 class="faq-group-title">Spending and forecast horizon</h3>
+
+    <details class="faq-item">
+      <summary>No household spending has been entered</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> A retirement forecast cannot test affordability unless there is a household spending requirement.</p>
+        <p><strong>How to resolve it:</strong> Add at least one Household spending phase. If spending changes later in retirement, add additional phases rather than trying to represent the whole retirement with one number.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>There is a gap between household spending phases / spending stops before the forecast ends</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> One or more years or dates in the forecast are not covered by a spending phase. This can make later asset balances look artificially strong.</p>
+        <p><strong>How to resolve it:</strong> Adjust the end of the earlier phase and the start of the next phase so spending is continuous, or add a phase for the intervening period. Extend the final phase if spending is intended to continue to the end of the forecast.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Household spending phases overlap</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> Two spending targets apply to the same age or date range.</p>
+        <p><strong>How to resolve it:</strong> Adjust the phase boundaries so only one household spending target applies at any point in time.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Forecast ends before age 90</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> A shorter forecast can understate longevity risk by stopping before a potentially long retirement has finished.</p>
+        <p><strong>How to resolve it:</strong> Consider extending Forecast assumptions → Forecast horizon to at least age 90, and potentially beyond that if you want a more conservative longevity test.</p>
+      </div>
+    </details>
+
+    <h3 class="faq-group-title">Tax-Year Precision and income</h3>
+
+    <details class="faq-item">
+      <summary>Tax-year precision is enabled but incomplete</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> Exact tax-year modelling requires a valuation date and dates of birth for both people. If these are missing, Pension Planner cannot place events reliably into 6 April–5 April tax years.</p>
+        <p><strong>How to resolve it:</strong> Complete People &amp; retirement and Tax-year precision, including the valuation date and both dates of birth.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Stored ages do not match the dates of birth</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> The age implied by a date of birth at the valuation date differs from the older age field held in the scenario.</p>
+        <p><strong>How to resolve it:</strong> Open People &amp; retirement and re-save the dates of birth or valuation date. Exact forecasts use the DOB-derived ages.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>First tax year starts part-way through with no year-to-date taxable income entered</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> If your valuation date is after 6 April, some Personal Allowance or tax-band capacity may already have been used earlier in that tax year.</p>
+        <p><strong>How to resolve it:</strong> Review Tax-year precision → First tax-year context and enter taxable income already received since 6 April where appropriate.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>No State Pension is entered for one of the people</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> State Pension is often a significant source of guaranteed later-life income, so omitting it can materially distort the forecast.</p>
+        <p><strong>How to resolve it:</strong> Add a State Pension income stream for that person if they are expected to receive one. Check the amount, starting age/date and growth assumption.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>State Pension, annuity or rental income is marked non-taxable</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> Pension Planner normally expects these income types to occupy the individual owner's Personal Allowance and tax bands.</p>
+        <p><strong>How to resolve it:</strong> Review the real-world tax treatment of the income and switch Taxable on where appropriate. A deliberate exception can be left in place, but the warning is a prompt to confirm the choice.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Income Tax is switched off</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> Ignoring UK Income Tax can materially overstate net retirement income and understate the pension withdrawals required to fund spending.</p>
+        <p><strong>How to resolve it:</strong> Enable UK Income Tax unless you are deliberately running a pre-tax comparison scenario.</p>
+      </div>
+    </details>
+
+    <h3 class="faq-group-title">Pensions and withdrawals</h3>
+
+    <details class="faq-item">
+      <summary>Automatic household tax optimisation is not enabled</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> The scenario is using Manual asset order rather than the Tax-efficient household strategy.</p>
+        <p><strong>How to resolve it:</strong> This is a note rather than an error. If you want Pension Planner to compare household funding sources and individual tax positions automatically, select Inputs → Withdrawal strategy → Tax-efficient household.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Automatic crystallisation is paired with Manual asset order</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> Optimised model-generated crystallisation is designed to work with the Tax-efficient household withdrawal strategy.</p>
+        <p><strong>How to resolve it:</strong> Either switch the household withdrawal strategy to Tax-efficient household or replace automatic crystallisation with manually entered crystallisation events.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>A crystallisation event occurs before pension access</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> A DC pension crystallisation has been scheduled before the asset's modelled access age or exact access date.</p>
+        <p><strong>How to resolve it:</strong> Move the crystallisation event to an accessible age/date, or correct the pension's access age if the input itself is wrong.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Crystallised pension exceeds total pension balance</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> The amount entered as already crystallised drawdown is greater than the total current DC pension balance.</p>
+        <p><strong>How to resolve it:</strong> Correct either the current pension balance or the crystallised-balance input so the crystallised amount does not exceed the total pension.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Lump Sum Allowance is negative or above the standard amount</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> A negative remaining allowance is inconsistent with the model. A value above the standard £268,275 allowance may be legitimate where protected lump-sum rights apply, but it deserves confirmation.</p>
+        <p><strong>How to resolve it:</strong> Review People &amp; retirement → remaining Lump Sum Allowance. Correct an accidental value, or retain a higher figure only if you deliberately want to model protected rights.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Possible MPAA contribution conflict</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> After flexible pension access, planned plus entered year-to-date DC contributions exceed the modelled £10,000 Money Purchase Annual Allowance threshold.</p>
+        <p><strong>How to resolve it:</strong> Check the timing of flexible pension access and the contribution schedule. Pension Planner flags the possible conflict but does not calculate an Annual Allowance tax charge, so obtain current tax guidance if this could apply in practice.</p>
+      </div>
+    </details>
+
+    <h3 class="faq-group-title">GIA, annuity and rental-property inputs</h3>
+
+    <details class="faq-item">
+      <summary>A GIA needs an individual owner</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> Dividend tax and Capital Gains Tax are calculated per person, so Pension Planner cannot reliably allocate a jointly owned GIA without knowing the beneficial ownership split.</p>
+        <p><strong>How to resolve it:</strong> Split the holding into one GIA for each beneficial owner, using the appropriate share of current market value and pooled acquisition cost for each person.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>GIA pooled acquisition cost is above market value</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> This represents an unrealised loss. It can be perfectly valid, but it materially affects future CGT estimates.</p>
+        <p><strong>How to resolve it:</strong> Check the pooled cost basis against your records. If the investment genuinely has an unrealised loss, no correction is required.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>An annuity needs an individual owner</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> Annuity income is taxed on the individual receiving it, so a jointly assigned stream cannot be placed accurately into each person's Personal Allowance and tax bands.</p>
+        <p><strong>How to resolve it:</strong> Assign the annuity to the person who receives the income.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Rental property income needs an individual owner</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> Pension Planner calculates Income Tax separately for each person rather than as a single household taxpayer.</p>
+        <p><strong>How to resolve it:</strong> For jointly owned property, create separate rental-income streams for each person using the appropriate taxable ownership shares.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Rental expenses exceed gross rent</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> The entered expenses create a property loss. Pension Planner floors taxable property profit at £0 for that period and does not carry the loss forward into later tax years.</p>
+        <p><strong>How to resolve it:</strong> Check the gross-rent and allowable-expense inputs. If a genuine tax loss exists, verify its real tax treatment separately and model future taxable profit appropriately.</p>
+      </div>
+    </details>
+
+    <h3 class="faq-group-title">Assumptions, Monte Carlo and affordability</h3>
+
+    <details class="faq-item">
+      <summary>Investment-return, inflation or volatility assumption is unusually high or low</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> Model Health highlights assumptions that may produce unusually optimistic, pessimistic or unrepresentative long-term results.</p>
+        <p><strong>How to resolve it:</strong> Confirm that the assumption is deliberate, then create comparison scenarios using more conservative and more optimistic values. The purpose of the warning is sensitivity testing, not to prescribe a single 'correct' assumption.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Monte Carlo is disabled or the path count is low</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> A deterministic forecast assumes a smooth annual return and does not show sequence-of-returns uncertainty. A very small Monte Carlo sample can also give less stable results.</p>
+        <p><strong>How to resolve it:</strong> Enable Monte Carlo if you want a resilience check. Pension Planner suggests around 1,000 paths while analysing and 5,000 for a final sensitivity check if device performance allows.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>A capital event falls outside the forecast</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> The event occurs before the model begins or after the selected forecast horizon, so it cannot affect the displayed forecast.</p>
+        <p><strong>How to resolve it:</strong> Correct the capital-event age/date or extend the forecast horizon if the event should be included.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>The average-return path has an unfunded shortfall</summary>
+      <div class="faq-answer">
+        <p><strong>Why it appears:</strong> In at least one modelled year, household cash requirements cannot be fully met from income and accessible assets even on the deterministic average-return path.</p>
+        <p><strong>How to resolve it:</strong> Start with the first year showing the shortfall in Annual Detail. Then review spending, retirement timing, pension-access dates, available assets, contribution assumptions and any missing income. Do not rely on balances shown after an unfunded shortfall without understanding what caused it.</p>
+      </div>
+    </details>
+
+    <div class="callout faq-callout">
+      <strong>Model Health passed — am I finished?</strong>
+      <p>No. “No material issues found” means the automated checks did not identify obvious data-quality problems. It does not mean the assumptions are suitable, the forecast is certain or the retirement plan is guaranteed to succeed. Compare scenarios and review the underlying assumptions before making real financial decisions.</p>
+    </div>
+  </section>
+
+  <h2>Common technical checks</h2>
+  <h3>A forecast result looks unexpected</h3>
+  <p>Review Model Health first, then inspect Annual Detail from the first tax year in which the result changes materially. Check income ownership, asset access ages, spending phases, capital events, tax settings and planned contributions.</p>
+
+  <h3>Mac and iPhone show different scenarios</h3>
+  <p>The app does not automatically synchronise scenario libraries between devices. Use the manual backup/export and import workflow when you intentionally want to transfer the complete scenario library.</p>
+
+  <h3>A tax result looks surprising</h3>
+  <p>Check the selected tax region for each person, taxable flags, year-to-date context in the first partial tax year, pension access strategy and any GIA cost-basis/dividend inputs. Pension Planner is a planning model rather than a complete tax-return engine.</p>
+
+  <h2>Still need help?</h2>
+  <p>Email <a href="mailto:support@pensionplannerapp.co.uk">support@pensionplannerapp.co.uk</a>. A screenshot of the Model Health message is normally more useful than sending detailed financial data.</p>
 </div></section>
 </main>
+
 
 <footer class="site-footer">
   <div class="container footer-grid">

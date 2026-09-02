@@ -24,3 +24,8 @@ If your website is already hosted on GitHub Pages:
 - https://pensionplannerapp.co.uk/privacy/
 - https://pensionplannerapp.co.uk/data/
 - https://pensionplannerapp.co.uk/disclaimer/
+
+
+## v1.2 support-page update
+
+The Support page now includes a detailed, expandable Model Health FAQ covering common critical issues, warnings and notes and explaining how to resolve or review them.

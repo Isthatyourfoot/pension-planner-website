@@ -134,3 +134,102 @@ h3 { font-size: 1.18rem; margin: 0 0 8px; }
   .nav-links a { padding: 11px 12px; }
   .menu-button { display: inline-flex; }
 }
+
+
+/* Model Health FAQ */
+.faq-section {
+  margin-top: 58px;
+  padding-top: 12px;
+  scroll-margin-top: 92px;
+}
+.severity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 24px 0 36px;
+}
+.severity-card {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+.severity-card strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text);
+}
+.severity-card span {
+  display: block;
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.5;
+}
+.severity-critical { border-top: 4px solid #a94442; }
+.severity-warning { border-top: 4px solid #b7791f; }
+.severity-note { border-top: 4px solid var(--primary); }
+
+.faq-group-title {
+  margin: 38px 0 13px !important;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+  font-size: 1.22rem;
+}
+.faq-item {
+  margin: 10px 0;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: var(--surface);
+  overflow: hidden;
+}
+.faq-item summary {
+  cursor: pointer;
+  position: relative;
+  list-style: none;
+  padding: 17px 50px 17px 18px;
+  color: var(--text);
+  font-weight: 700;
+  line-height: 1.4;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--surface-soft);
+  color: var(--primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.faq-item[open] summary {
+  background: #f7faff;
+  border-bottom: 1px solid var(--line);
+}
+.faq-item[open] summary::after { content: "−"; }
+.faq-item summary:focus-visible {
+  outline: 3px solid rgba(29,94,168,.28);
+  outline-offset: -3px;
+}
+.faq-answer {
+  padding: 4px 18px 16px;
+}
+.faq-answer p {
+  margin: 12px 0 0;
+}
+.faq-answer strong { color: var(--text); }
+.faq-callout {
+  margin-top: 30px;
+}
+.faq-callout p {
+  margin-bottom: 0;
+}
+@media (max-width: 900px) {
+  .severity-grid { grid-template-columns: 1fr; }
+}
